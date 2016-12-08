@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.backtop{
+			position: fixed;
+			right: 0;
+			bottom: 100px;
+			display: none;
+		}
+		body{
+			height: 2200px;
+		}
+	</style>
+	<body>
+		<img src="images/top.gif" class="backtop"/>
+	</body>
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		$(window).scroll(function(){
+			
+			var sTop = $(this).scrollTop();
+			
+			$('.backtop')[sTop>100?'show':'hide']();
+			
+		});
+		
+		
+		$('.backtop').click(function(){
+			
+			$('body,html').animate({scrollTop:0});
+			
+		});
+	</script>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.echo{
+			width: 600px;
+			height: 360px;
+			border-radius: 5px;
+			position: absolute;
+			background: #fff;
+			box-shadow: 0 0 10px 1px rgba(0,0,0,0.3);
+		}
+		.echo .title{
+			font:14px/40px "微软雅黑";
+			background: linear-gradient(to bottom,#ccc,#eee);
+			overflow: hidden;
+			cursor: move;
+		}
+		.echo .title .close{
+			float: right;
+			padding: 0 10px;
+			font-size: 20px;
+			cursor: pointer;
+			color: #999;
+		}
+		
+		.echo .title .close:hover{
+			color: #333;
+		}
+	</style>
+	<body>
+		<div class="echo">
+			<h5 class="title"><div class="close">&times;</div></h5>
+		</div>
+	</body>
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		var on = 0;
+		
+		var title = $('.echo .title');
+		
+		var colse = title.children('.close');
+		
+		var echo = title.parent();
+		
+		var curPos = {};
+		
+		var max = {};
+		
+	
+		
+		title.mousedown(function(e){
+			
+			on = 1;
+			
+			curPos.left = e.clientX -title.offset().left;
+			
+			curPos.top = e.clientY -title.offset().top;
+			
+			max.left = $(window).width()-echo.width();
+			
+			max.top = $(window).height()-echo.height();
+			
+			
+		}).mouseup(function(){
+			
+			on = 0;
+			
+		});
+		
+		$(document).mousemove(function(e){
+			
+			if(!on) return;
+			
+			var left = e.clientX-curPos.left,
+				tops = e.clientY-curPos.top,
+				left = left<0 ?0 :left>max.left?max.left:left,
+				tops = tops<0?0:tops>max.top?max.top:tops;
+
+			echo.css({left:left,top:tops});
+			
+			
+		});
+		
+	</script>
+</html>

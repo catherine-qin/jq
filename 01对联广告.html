@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.ad{
+			position: fixed;
+			top: 50%;
+			transform: translateY(-50%);
+			padding: 20px;
+			border: 2px solid #ccc;
+		}
+		
+		.ad .close{
+			position: absolute;
+			right: 0;
+			width: 30px;
+			line-height: 30px;
+			text-align: center;
+			top: 0;
+			cursor: pointer;
+			color: #666;
+			font-size: 20px;
+		}
+		.ad .close:hover{
+			color: #000;
+			font-weight: bold;
+		}
+		.ad img{
+			display: block;
+			margin: 10px;
+		}
+		.right{
+			right: 0;
+		}
+		
+	</style>
+	<body>
+		<div class="ad"><span class="close">&times;</span><img src="images/2.gif" alt="" /></div>
+		<div class="ad right"><span class="close">&times;</span><img src="images/2.gif" alt="" /></div>
+	</body>
+	
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$('.ad .close').click(function(){
+			
+			$(this).parent().hide();
+			
+		});
+	</script>
+</html>
